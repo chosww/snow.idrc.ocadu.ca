@@ -1,0 +1,19 @@
+name: Cloudflare Pages
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+    - name: Wait for Cloudflare Pages
+      uses: walshydev/cf-pages-await@v1
+      with:
+        apiToken: ${{ secrets.CF_API_TOKEN }}
+        accountId: 'ac36c95f6ffa664eda33df48aa43c298'
+        project: 'snow-idrc-ocadu-ca'
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
+        commitHash: ${{ github.sha }}"
